@@ -12,10 +12,10 @@ from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
 
 # Pythonの実行場所からの相対パスを記述しないとimportだめっぽい。
-# だから、はじめに"GRIT/"を付与した。
-sys.path.insert(0, 'GRiT/third_party/CenterNet2/projects/CenterNet2/')
+# だから、はじめに"GRiT_colab/"を付与した。
+sys.path.insert(0, 'GRiT_colab/third_party/CenterNet2/projects/CenterNet2/')
 from centernet.config import add_centernet_config
-sys.path.insert(0, 'GRiT/')
+sys.path.insert(0, 'GRiT_colab/')
 from grit.config import add_grit_config
 
 from grit.predictor import VisualizationDemo
@@ -29,8 +29,8 @@ def setup_cfg(cpu=False, test_task=""):
         cfg.MODEL.DEVICE="cpu"
     add_centernet_config(cfg)
     add_grit_config(cfg)
-    cfg.merge_from_file("GRiT/configs/GRiT_B_DenseCap_ObjectDet.yaml")
-    opts = ["MODEL.WEIGHTS", "GRiT/models/grit_b_densecap_objectdet.pth"]
+    cfg.merge_from_file("GRiT_colab/configs/GRiT_B_DenseCap_ObjectDet.yaml")
+    opts = ["MODEL.WEIGHTS", "GRiT_colab/models/grit_b_densecap_objectdet.pth"]
     cfg.merge_from_list(opts)
     # Set score_threshold for builtin models
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5
