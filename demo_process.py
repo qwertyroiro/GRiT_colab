@@ -43,12 +43,11 @@ def setup_cfg(cpu=False, test_task=""):
     cfg.freeze()
     return cfg
 
-def GRiT_process(image_path):
+def GRiT_process(img):
     mp.set_start_method("spawn", force=True)
     setup_logger(name="fvcore")
     cfg = setup_cfg()
     demo = VisualizationDemo(cfg)
-    img = read_image(image_path, format="BGR")
     predictions, visualized_output = demo.run_on_image(img)
     
     # 中身をcpuに移動
